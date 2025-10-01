@@ -1,6 +1,5 @@
 name: CI/CD Pipeline
 
-# Run this pipeline when code is pushed
 on:
   push:
     branches: [ "main" ]
@@ -8,16 +7,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      # Step 1: Get code from GitHub
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Just say hello (test job)
       - name: Say Hello
         run: echo "🚀 Build started for Hello World app"
 
-      # Step 3: List files (to show pipeline is working)
+      - name: Show current directory
+        run: pwd
+
       - name: List project files
-        run: ls -l
+        run: ls -la "$GITHUB_WORKSPACE"
